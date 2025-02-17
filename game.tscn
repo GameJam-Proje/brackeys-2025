@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dgv5hxe4qr8ic"]
+
+[ext_resource type="Script" path="res://game.gd" id="1_itcwp"]
+[ext_resource type="Script" path="res://product_res.gd" id="2_caxda"]
+[ext_resource type="Script" path="res://feature_res.gd" id="2_pdt8m"]
+
+[sub_resource type="Resource" id="Resource_6qwja"]
+script = ExtResource("2_pdt8m")
+cost = 100.0
+damage_cost = 40.0
+text = "Test Feature"
+
+[sub_resource type="Resource" id="Resource_qpa7j"]
+script = ExtResource("2_pdt8m")
+cost = 40.0
+damage_cost = 10.0
+text = "Test Feature 2"
+
+[sub_resource type="Resource" id="Resource_mrha3"]
+script = ExtResource("2_caxda")
+name = "Test Product"
+features = Array[ExtResource("2_pdt8m")]([SubResource("Resource_6qwja"), SubResource("Resource_qpa7j")])
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_itcwp")
+product = SubResource("Resource_mrha3")
+
+[node name="FeatureContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="InfoContainer" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="InfoLabel" type="Label" parent="InfoContainer"]
+layout_mode = 2
+text = "Cost: 30"
+
+[node name="Button" type="Button" parent="InfoContainer"]
+layout_mode = 2
+text = "Save
+"
+
+[connection signal="pressed" from="InfoContainer/Button" to="." method="_on_save_button_pressed"]
