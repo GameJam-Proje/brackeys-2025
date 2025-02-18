@@ -1,25 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dgv5hxe4qr8ic"]
+[gd_scene load_steps=5 format=3 uid="uid://dgv5hxe4qr8ic"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_itcwp"]
-[ext_resource type="Script" path="res://product_res.gd" id="2_caxda"]
-[ext_resource type="Script" path="res://feature_res.gd" id="2_pdt8m"]
-
-[sub_resource type="Resource" id="Resource_6qwja"]
-script = ExtResource("2_pdt8m")
-cost = 100.0
-damage_cost = 40.0
-text = "Test Feature"
-
-[sub_resource type="Resource" id="Resource_qpa7j"]
-script = ExtResource("2_pdt8m")
-cost = 40.0
-damage_cost = 10.0
-text = "Test Feature 2"
-
-[sub_resource type="Resource" id="Resource_mrha3"]
-script = ExtResource("2_caxda")
-name = "Test Product"
-features = Array[ExtResource("2_pdt8m")]([SubResource("Resource_6qwja"), SubResource("Resource_qpa7j")])
+[ext_resource type="Resource" uid="uid://bk7uce6v18lid" path="res://resources/product/dron.tres" id="3_huc81"]
+[ext_resource type="Resource" uid="uid://bqjwwmikmrcq7" path="res://resources/product/robot_supurge.tres" id="4_fjorx"]
+[ext_resource type="Script" path="res://resources/product_res.gd" id="4_tv3mw"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -29,32 +13,81 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_itcwp")
-product = SubResource("Resource_mrha3")
+products = Array[ExtResource("4_tv3mw")]([ExtResource("3_huc81"), ExtResource("4_fjorx")])
 
-[node name="FeatureContainer" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_top = -40.0
+offset_right = 49.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelToggleButton" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Create Product"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Show Products"
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
 grow_vertical = 2
 
-[node name="InfoContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 200)
 layout_mode = 1
-anchors_preset = 11
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
 grow_horizontal = 0
-grow_vertical = 2
 
-[node name="InfoLabel" type="Label" parent="InfoContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
 layout_mode = 2
-text = "Cost: 30"
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="Button" type="Button" parent="InfoContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/MarginContainer"]
 layout_mode = 2
-text = "Save
-"
 
-[connection signal="pressed" from="InfoContainer/Button" to="." method="_on_save_button_pressed"]
+[node name="Label" type="Label" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Money: 300"
+
+[node name="ProductSelector" type="OptionButton" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelToggleButton" to="." method="_on_panel_toggle_button_pressed"]
+[connection signal="item_selected" from="PanelContainer2/MarginContainer/VBoxContainer/ProductSelector" to="." method="_on_product_selector_item_selected"]

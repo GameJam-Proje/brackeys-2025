@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ProductRes" load_steps=7 format=3 uid="uid://bk7uce6v18lid"]
+
+[ext_resource type="Script" path="res://resources/parameter_res.gd" id="1_lrh4y"]
+[ext_resource type="Script" path="res://resources/switch_parameter_res.gd" id="2_4kgob"]
+[ext_resource type="Script" path="res://resources/product_res.gd" id="2_6pg3f"]
+
+[sub_resource type="Resource" id="Resource_5iiya"]
+script = ExtResource("2_4kgob")
+value = false
+label = "Acik/Kapali?"
+
+[sub_resource type="Resource" id="Resource_d0cbw"]
+script = ExtResource("2_4kgob")
+value = true
+label = "Baska"
+
+[sub_resource type="Resource" id="Resource_10qa1"]
+script = ExtResource("2_4kgob")
+value = true
+label = "Baska bir tane daha"
+
+[resource]
+script = ExtResource("2_6pg3f")
+name = "Dron"
+description = "Aciklama"
+initial_parameters = Array[ExtResource("1_lrh4y")]([SubResource("Resource_5iiya"), SubResource("Resource_d0cbw"), SubResource("Resource_10qa1")])
