@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ProductRes" load_steps=5 format=3 uid="uid://bqjwwmikmrcq7"]
+
+[ext_resource type="Script" path="res://resources/parameter_res.gd" id="1_c3bkm"]
+[ext_resource type="Script" path="res://resources/product_res.gd" id="2_2lfge"]
+[ext_resource type="Script" path="res://resources/switch_parameter_res.gd" id="2_c08kp"]
+
+[sub_resource type="Resource" id="Resource_v28st"]
+script = ExtResource("2_c08kp")
+value = true
+label = "Acik/Kapali?"
+
+[resource]
+script = ExtResource("2_2lfge")
+name = "Robot Supurge"
+description = "Supuruyor"
+initial_parameters = Array[ExtResource("1_c3bkm")]([SubResource("Resource_v28st")])

@@ -1,25 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dgv5hxe4qr8ic"]
+[gd_scene load_steps=5 format=3 uid="uid://dgv5hxe4qr8ic"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_itcwp"]
-[ext_resource type="Script" path="res://resources/parameter_res.gd" id="2_222gd"]
-[ext_resource type="Script" path="res://resources/switch_parameter_res.gd" id="3_10xis"]
+[ext_resource type="Resource" uid="uid://bk7uce6v18lid" path="res://resources/product/dron.tres" id="3_huc81"]
+[ext_resource type="Resource" uid="uid://bqjwwmikmrcq7" path="res://resources/product/robot_supurge.tres" id="4_fjorx"]
 [ext_resource type="Script" path="res://resources/product_res.gd" id="4_tv3mw"]
-
-[sub_resource type="Resource" id="Resource_p77cf"]
-script = ExtResource("3_10xis")
-value = true
-label = "Acik mi?"
-
-[sub_resource type="Resource" id="Resource_dqj2l"]
-script = ExtResource("3_10xis")
-value = false
-label = "Baska?"
-
-[sub_resource type="Resource" id="Resource_53nrs"]
-script = ExtResource("4_tv3mw")
-name = "Robot Supurge"
-description = "Supurge"
-initial_parameters = Array[ExtResource("2_222gd")]([SubResource("Resource_p77cf"), SubResource("Resource_dqj2l")])
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -29,7 +13,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_itcwp")
-product = SubResource("Resource_53nrs")
+products = Array[ExtResource("4_tv3mw")]([ExtResource("3_huc81"), ExtResource("4_fjorx")])
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -77,4 +61,33 @@ theme_override_constants/margin_bottom = 16
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Money: 300"
+
+[node name="ProductSelector" type="OptionButton" parent="PanelContainer2/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/PanelToggleButton" to="." method="_on_panel_toggle_button_pressed"]
+[connection signal="item_selected" from="PanelContainer2/MarginContainer/VBoxContainer/ProductSelector" to="." method="_on_product_selector_item_selected"]

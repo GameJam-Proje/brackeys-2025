@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://xlmi8jaw0er7"]
+[gd_scene load_steps=8 format=3 uid="uid://xlmi8jaw0er7"]
 
 [ext_resource type="Script" path="res://ui/create_product/create_product.gd" id="1_f3qm5"]
 [ext_resource type="Texture2D" uid="uid://d3nbfwoh71w3h" path="res://icon.svg" id="1_tj0dp"]
+[ext_resource type="Script" path="res://resources/product_res.gd" id="2_r4wtr"]
+[ext_resource type="Resource" uid="uid://bk7uce6v18lid" path="res://resources/product/dron.tres" id="3_yi3wp"]
+[ext_resource type="Resource" uid="uid://bqjwwmikmrcq7" path="res://resources/product/robot_supurge.tres" id="4_pqv4k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2pgma"]
 bg_color = Color(0.156863, 0.156863, 0.156863, 1)
@@ -21,6 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f3qm5")
+base_products = Array[ExtResource("2_r4wtr")]([ExtResource("3_yi3wp"), ExtResource("4_pqv4k")])
 
 [node name="TextureRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -75,19 +79,17 @@ layout_mode = 2
 layout_mode = 2
 text = "Product Type:"
 
-[node name="OptionButton" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="BaseProductSelector" type="OptionButton" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 allow_reselect = true
-item_count = 2
-popup/item_0/text = "Product"
-popup/item_1/text = "Product 2"
-popup/item_1/id = 1
 
 [node name="Label2" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 text = "Product Name:"
 
-[node name="TextEdit" type="TextEdit" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="ProductNameEdit" type="TextEdit" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 35.515)
 layout_mode = 2
 placeholder_text = "Name..."
@@ -102,7 +104,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_cuf10")
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="CreateButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Create Product"
 
@@ -111,4 +113,5 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Cancel"
 
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CreateButton" to="." method="_on_create_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
