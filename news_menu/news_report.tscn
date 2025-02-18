@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://burttg3i7vblu"]
+
+[ext_resource type="Script" path="res://news_menu/news_report.gd" id="1_mq7l7"]
+[ext_resource type="Texture2D" uid="uid://d3nbfwoh71w3h" path="res://icon.svg" id="1_rv4qt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ykf50"]
+
+[node name="NewsReport" type="MarginContainer"]
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 15
+script = ExtResource("1_mq7l7")
+initial_title = "Haber Başlığı!"
+initial_date = "01/02/2003"
+initial_text = "Bu bir haberdir falan filan bu haber bu şekilde yazılmıştır ve aynen böyle devam eder"
+initial_image = ExtResource("1_rv4qt")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_rv4qt")
+
+[node name="HSeparator" type="HSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ykf50")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[b][color=#ff5555]Haber Başlığı![/color][/b] [i][color=#bbb](01/01/2020)[/color][/i]
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultricies neque ut libero ornare rhoncus. Proin odio metus, pellentesque et eleifend in, dapibus eget nunc. "
+fit_content = true
+scroll_active = false
