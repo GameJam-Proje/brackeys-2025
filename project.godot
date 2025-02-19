@@ -14,3 +14,7 @@ config/name="brackeys_2025"
 run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalTimer="*res://global_timer.gd"
