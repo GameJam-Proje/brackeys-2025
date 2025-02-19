@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dgv5hxe4qr8ic"]
+[gd_scene load_steps=6 format=3 uid="uid://dgv5hxe4qr8ic"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_itcwp"]
 [ext_resource type="Resource" uid="uid://bk7uce6v18lid" path="res://resources/product/dron.tres" id="3_huc81"]
 [ext_resource type="Resource" uid="uid://bqjwwmikmrcq7" path="res://resources/product/robot_supurge.tres" id="4_fjorx"]
 [ext_resource type="Script" path="res://resources/product_res.gd" id="4_tv3mw"]
+[ext_resource type="PackedScene" uid="uid://dqv3r37d63kck" path="res://ui/parameters/switch/switch_param_ui.tscn" id="5_ygxg4"]
 
 [node name="Game" type="Control"]
 layout_mode = 3
@@ -59,6 +60,9 @@ theme_override_constants/margin_bottom = 16
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SwitchParamUi" parent="PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("5_ygxg4")]
 layout_mode = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="."]

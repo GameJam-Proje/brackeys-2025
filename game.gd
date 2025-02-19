@@ -33,11 +33,11 @@ func update_parameters() -> void:
 		
 	for param in current_product.initial_parameters:
 		if param is SwitchParameterRes:
-			var checkbox = CheckBox.new()
-			checkbox.set_text(param.label)
-			checkbox.button_pressed = param.value
-			
+			var checkbox = SwitchParamUI.new_switch(param)
 			%VBoxContainer.add_child(checkbox)
+		elif param is SliderParameterRes:
+			var slider = SliderParamUI.new_slider(param)
+			%VBoxContainer.add_child(slider)
 	
 func _on_product_created(product: ProductRes):
 	products.append(product)

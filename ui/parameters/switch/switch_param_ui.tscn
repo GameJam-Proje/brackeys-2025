@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqv3r37d63kck"]
+
+[ext_resource type="Script" path="res://ui/parameters/switch/switch_param_ui.gd" id="1_pm803"]
+
+[node name="SwitchParamUi" type="CheckButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Hello world"
+script = ExtResource("1_pm803")
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

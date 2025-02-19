@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="ProductRes" load_steps=7 format=3 uid="uid://bk7uce6v18lid"]
+[gd_resource type="Resource" script_class="ProductRes" load_steps=9 format=3 uid="uid://bk7uce6v18lid"]
 
 [ext_resource type="Script" path="res://resources/parameter_res.gd" id="1_lrh4y"]
 [ext_resource type="Script" path="res://resources/switch_parameter_res.gd" id="2_4kgob"]
 [ext_resource type="Script" path="res://resources/product_res.gd" id="2_6pg3f"]
+[ext_resource type="Script" path="res://resources/slider_parameter_res.gd" id="3_as337"]
 
 [sub_resource type="Resource" id="Resource_5iiya"]
 script = ExtResource("2_4kgob")
@@ -19,8 +20,16 @@ script = ExtResource("2_4kgob")
 value = true
 label = "Baska bir tane daha"
 
+[sub_resource type="Resource" id="Resource_m8rqh"]
+script = ExtResource("3_as337")
+value = 30.0
+min_value = 0.0
+max_value = 100.0
+step = 10.0
+label = "SliderTest"
+
 [resource]
 script = ExtResource("2_6pg3f")
 name = "Dron"
 description = "Aciklama"
-initial_parameters = Array[ExtResource("1_lrh4y")]([SubResource("Resource_5iiya"), SubResource("Resource_d0cbw"), SubResource("Resource_10qa1")])
+initial_parameters = Array[ExtResource("1_lrh4y")]([SubResource("Resource_5iiya"), SubResource("Resource_d0cbw"), SubResource("Resource_10qa1"), SubResource("Resource_m8rqh")])
