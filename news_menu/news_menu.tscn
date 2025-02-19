@@ -1,7 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkkhihhbo66e3"]
+[gd_scene load_steps=8 format=3 uid="uid://bkkhihhbo66e3"]
 
-[ext_resource type="PackedScene" uid="uid://burttg3i7vblu" path="res://news_menu/news_report.tscn" id="1_0rxwn"]
 [ext_resource type="Script" path="res://news_menu/news_menu.gd" id="1_0sn15"]
+[ext_resource type="Texture2D" uid="uid://d3nbfwoh71w3h" path="res://icon.svg" id="2_867xb"]
+[ext_resource type="Script" path="res://news_menu/news_res.gd" id="3_6sw8u"]
+
+[sub_resource type="Resource" id="Resource_7dfpb"]
+script = ExtResource("3_6sw8u")
+title = "Değişik Başlık"
+body = "Değişik Body"
+year = 231
+month = 11
+day = 31
+image = ExtResource("2_867xb")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h8sev"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -29,6 +39,7 @@ offset_right = -33.4081
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_0sn15")
+initial_news_res = SubResource("Resource_7dfpb")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -76,7 +87,3 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_wadq3")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="NewsReport" parent="Panel/VBoxContainer/ScrollContainer/VBoxContainer" instance=ExtResource("1_0rxwn")]
-layout_mode = 2
-initial_title = "Haber Baaşlığı!"

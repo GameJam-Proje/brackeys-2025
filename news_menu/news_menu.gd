@@ -1,8 +1,17 @@
 extends Node
 
-# FIXME: çalışmıyor :((
-func add_report(title: String, date: String, text: String, image: Texture2D):
-	var report_scene = ResourceLoader.load("res://news_menu/news_report.tscn")
-	var report_node = report_scene.instantiate()
-	report_node.set_fields(title, date, text, image)
-	$Panel/VBoxContainer/ScrollContainer/VBoxContainer.add_child(report_node)
+@onready var news_container = $Panel/VBoxContainer/ScrollContainer/VBoxContainer
+@onready var news_card_scene = preload("res://news_menu/news_card.tscn")
+@export var initial_news_res: NewsRes
+
+# TODO: Test amaçlı, silinecek!
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_up"):
+		initial_news_res.year += 1
+		add_card(initial_news_res)
+
+func add_card(news_res: NewsRes):
+	var news_card = news_card_scene.instantiate()
+	news_card.initial_value = news_res
+	news_container.add_child(news_card)
+	news_container.move_child(news_card, 0)
