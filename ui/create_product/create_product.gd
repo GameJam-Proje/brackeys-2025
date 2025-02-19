@@ -13,7 +13,15 @@ func _on_cancel_button_pressed() -> void:
 
 
 func _on_create_button_pressed() -> void:
-	var product: ProductRes = base_products[%BaseProductSelector.get_selected_id()].duplicate()
+	if %ProductNameEdit.text.is_empty():
+		return
+		
+	var product := ProductRes.new()
+	var base_product := base_products[%BaseProductSelector.get_selected_id()] 
+	
+	for param in base_product.initial_parameters:
+		product.initial_parameters.append(param.duplicate())
+	
 	product.name = %ProductNameEdit.text
 	
 	product_created.emit(product)

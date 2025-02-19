@@ -8,7 +8,7 @@ extends Control
 
 func _ready() -> void:
 	current_product = products[0]
-	
+	current_product.initial_parameters
 	parameters.append_array(current_product.initial_parameters)
 	
 	for product in products:
@@ -38,6 +38,8 @@ func update_parameters() -> void:
 		elif param is SliderParameterRes:
 			var slider = SliderParamUI.new_slider(param)
 			%VBoxContainer.add_child(slider)
+			
+	
 	
 func _on_product_created(product: ProductRes):
 	products.append(product)
