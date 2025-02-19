@@ -21,6 +21,5 @@ static func new_slider(param: SliderParameterRes) -> SliderParamUI:
 
 	return obj
 
-
-func _on_value_changed(value: float) -> void:
+func _on_slider_value_changed(value: float) -> void:
 	parameter.value = value
